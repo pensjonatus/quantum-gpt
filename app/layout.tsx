@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="flex min-h-screen flex-col items-center justify-between py-16">
+        <main className="flex min-h-screen md:min-h-[calc(100vh-32px)] flex-col items-center justify-center gap-3 md:gap-12">
           {children}
         </main>
       </body>

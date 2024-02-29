@@ -9,13 +9,12 @@ export default function Home() {
         <Logo />
         <Title>QuantumGPT</Title>
       </div>
-      <p className="text-xl">You got the correct answer in some universe</p>
-      <div className="flex justify-between flex-wrap">
+      <p className="text-xl text-center">
+        You got the correct answer in some universe
+      </p>
+      <div className="flex justify-between flex-wrap gap-2">
         <ButtonLink href="/chat">Chat</ButtonLink>
         <ButtonLink href="/FAQ">FAQ</ButtonLink>
-      </div>
-      <div>
-        © Copyright by the Darcuma Foundation {new Date().getFullYear()}
       </div>
     </>
   );
