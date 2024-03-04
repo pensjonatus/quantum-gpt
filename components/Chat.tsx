@@ -2,16 +2,18 @@
 
 import { generateResponse } from "@/app/actions";
 import Link from "next/link";
-import { useState } from "react";
+import { Ref, useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import Messages, { Message } from "./Messages";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
-    { actor: "bot", text: "What would you like to chat about?" },
+    {
+      actor: "bot",
+      body: [<p key="chat=up">What would you like to chat about?</p>],
+    },
   ]);
   const queryFieldName = "query";
-
   async function submitQuery(formData: FormData) {
     const userMessage = formData.get(queryFieldName);
     if (!userMessage) {
@@ -22,8 +24,13 @@ export default function Chat() {
 
     setMessages((currentMessages) => [
       ...currentMessages,
-      { actor: "you", text: userMessage.toString() },
-      { actor: "bot", text: botResponse },
+      {
+        actor: "you",
+        body: [
+          <p key={new Date().getMilliseconds()}>{userMessage.toString()}</p>,
+        ],
+      },
+      { actor: "bot", body: botResponse },
     ]);
   }
 
