@@ -14,7 +14,7 @@ export default function Home() {
       </p>
       <div className="flex justify-between flex-wrap gap-2">
         <ButtonLink href="/chat">Chat</ButtonLink>
-        <ButtonLink href="/FAQ">FAQ</ButtonLink>
+        <ButtonLink href="/faq">FAQ</ButtonLink>
       </div>
     </>
   );
