@@ -31,3 +31,24 @@ body {
     text-wrap: balance;
   }
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(29, 29, 29, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #af05a1;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f816da;
+}

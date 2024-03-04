@@ -29,9 +29,7 @@ export default function Chat() {
 
   return (
     <div className="w-full p-5 flex flex-col gap-4 items-center md:max-w-[800px]">
-      <div className="border border-fuchsia-500 p-3 md:p-6 h-[60vh] flex flex-col justify-end overflow-auto w-full rounded-lg">
-        <Messages messages={messages} />
-      </div>
+      <Messages messages={messages} />
       <form action={submitQuery} className="flex gap-2 w-full">
         <input
           type="text"
@@ -59,7 +57,10 @@ export default function Chat() {
           The answer does not seem correct? Don&apos;t worry! According to the
           many worlds interpretation, there is a universe where the bot
           generated the correct response.{" "}
-          <Link href="/faq" className="text-fuchsia-500 underline">Learn more in our FAQ</Link>.
+          <Link href="/faq" className="text-fuchsia-500 underline">
+            Learn more in our FAQ
+          </Link>
+          .
         </div>
       )}
     </div>
