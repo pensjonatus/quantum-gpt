@@ -1,8 +1,7 @@
 "use client";
-
 import { generateResponse } from "@/app/actions";
 import Link from "next/link";
-import { Ref, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import Messages, { Message } from "./Messages";
 
@@ -13,7 +12,9 @@ export default function Chat() {
       body: [<p key="chat=up">What would you like to chat about?</p>],
     },
   ]);
+
   const queryFieldName = "query";
+
   async function submitQuery(formData: FormData) {
     const userMessage = formData.get(queryFieldName);
     if (!userMessage) {

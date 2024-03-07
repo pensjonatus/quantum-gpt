@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Message from "./Message";
 
 export type Message = {

@@ -1,5 +1,4 @@
 "use client";
-
 import clsx from "clsx";
 import { Message } from "./Messages";
 import { useEffect, useRef } from "react";
