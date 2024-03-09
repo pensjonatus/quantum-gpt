@@ -30,6 +30,15 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .link {
+    text-decoration: underline;
+    color: #f816da;
+  }
+
+  .answer p {
+    margin-bottom: 1rem;
+  }
 }
 
 /* width */

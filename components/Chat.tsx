@@ -65,7 +65,7 @@ export default function Chat() {
           The answer does not seem correct? Don&apos;t worry! According to the
           many worlds interpretation, there is a universe where the bot
           generated the correct response.{" "}
-          <Link href="/faq" className="text-fuchsia-500 underline">
+          <Link href="/faq" className="link">
             Learn more in our FAQ
           </Link>
           .

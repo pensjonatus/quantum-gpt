@@ -3,8 +3,6 @@
 import { Message } from "@/components/Messages";
 import { words } from "@/utils/words";
 
-const templates = ["just-paragraphs", "bullets-in-the-middle"];
-
 function getRandomInt(min = 1, max = 10) {
   return min + Math.floor(Math.random() * max);
 }
@@ -28,7 +26,8 @@ function getNumberOfThings(
 }
 
 function getSentence(): string {
-  const sentence = getNumberOfThings(1, 50, getWord).join(" ") + ".";
+  const words = getNumberOfThings(1, 25, getWord);
+  const sentence = words.join(" ") + ".";
   const capitalized =
     sentence.slice(0, 1).toLocaleUpperCase() + sentence.slice(1);
 
@@ -36,11 +35,11 @@ function getSentence(): string {
 }
 
 function getParagraph(): string {
-  return getNumberOfThings(1, 10, getSentence).join(" ");
+  return getNumberOfThings(1, 5, getSentence).join(" ");
 }
 
-function getParagraphs(): Message["body"] {
-  const paragraphs = getNumberOfThings(2, 10, getParagraph);
+function getParagraphs(max: number): Message["body"] {
+  const paragraphs = getNumberOfThings(2, max, getParagraph);
   return paragraphs.map((paragraph, idx) => (
     <p key={idx} className="mb-6">
       {paragraph}
@@ -49,9 +48,7 @@ function getParagraphs(): Message["body"] {
 }
 
 export async function generateResponse(): Promise<Message["body"]> {
-  const template = templates[getRandomInt(0, 1)];
-
-  const result = getParagraphs();
+  const result = getParagraphs(5);
   return new Promise((resolve) => {
     resolve(result);
   });

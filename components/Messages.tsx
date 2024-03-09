@@ -2,7 +2,7 @@ import Message from "./Message";
 
 export type Message = {
   actor: "you" | "bot";
-  body: JSX.Element[];
+  body: JSX.Element[] | JSX.Element;
 };
 
 type MessagesProps = {

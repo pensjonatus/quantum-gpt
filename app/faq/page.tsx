@@ -14,11 +14,14 @@ const faqs: FAQ[] = [
       <>
         <p>
           Everything is fine, no need to worry. This bot relies on the{" "}
-          <a href="https://en.wikipedia.org/wiki/Many-worlds_interpretation">
-            many-worlds interpretation (MWI) which means, while it always
-            provides an accurate answer, you may not find yourself in the
-            universe where it does.
-          </a>
+          <a
+            className="link"
+            href="https://en.wikipedia.org/wiki/Many-worlds_interpretation"
+          >
+            many-worlds interpretation (MWI)
+          </a>{" "}
+          which means, while it always provides an accurate answer, you may not
+          find yourself in the universe where it does.
         </p>
         <p>
           In other words, there are multiple yous living parallel lives in
@@ -61,9 +64,10 @@ const faqs: FAQ[] = [
         <p>
           QuantumGPT uses a lot less energy than any other LLM chatbot. That is
           because it does not use an LLM at all. You do not bear the carbon cost
-          of training an LLM along with all the moral problems that come with
-          that.
+          of training an LLM. Not to mention all the moral problems that come
+          with LLMs even if you ignore the environment.
         </p>
+        <p>You could say you&apos;re a good person.</p>
       </>
     ),
   },
@@ -113,7 +117,7 @@ const faqs: FAQ[] = [
   },
   {
     question:
-      "All right, it was nice talking to you. I'll chat some more, see if I can have my problems solved for me by this miraculous new tech.",
+      "All right, it was nice talking to you. I'll chat some more, see if I can have my problems solved by this miraculous new tech.",
     answer: (
       <>
         <p>The pleasure is all ours. And have a great day.</p>
@@ -133,11 +137,13 @@ export default function Page() {
       </div>
       {faqs.map(({ question, answer }) => (
         <section key={question} className="mb-12">
-          <h2 className="mb-2 text-l font-semibold">{question}</h2>
-          {answer}
+          <h2 className="mb-2 text-xl font-semibold text-gray-400">
+            {question}
+          </h2>
+          <div className="answer">{answer}</div>
         </section>
       ))}
-      <Link href="/chat" className="underline text-fuchsia-500 mt-12 block">
+      <Link href="/chat" className="link mt-12 block">
         Back to chat
       </Link>
     </section>
