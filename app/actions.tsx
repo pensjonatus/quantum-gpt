@@ -1,6 +1,6 @@
 "use server";
 
-import { Message } from "@/components/Messages";
+import { MessageProps } from "@/components/Messages";
 import { words } from "@/utils/words";
 
 function getRandomInt(min = 1, max = 10) {
@@ -38,7 +38,7 @@ function getParagraph(): string {
   return getNumberOfThings(1, 5, getSentence).join(" ");
 }
 
-function getParagraphs(max: number): Message["body"] {
+function getParagraphs(max: number): MessageProps["body"] {
   const paragraphs = getNumberOfThings(2, max, getParagraph);
   return paragraphs.map((paragraph, idx) => (
     <p key={idx} className="mb-6">
@@ -47,7 +47,7 @@ function getParagraphs(max: number): Message["body"] {
   ));
 }
 
-export async function generateResponse(): Promise<Message["body"]> {
+export async function generateResponse(): Promise<MessageProps["body"]> {
   const result = getParagraphs(5);
   return new Promise((resolve) => {
     resolve(result);

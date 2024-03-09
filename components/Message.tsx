@@ -1,9 +1,9 @@
 "use client";
 import clsx from "clsx";
-import { Message } from "./Messages";
+import { MessageProps } from "./Messages";
 import { useEffect, useRef } from "react";
 
-export default function Message({ actor, body }: Message) {
+export default function Message({ actor, body }: MessageProps) {
   const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

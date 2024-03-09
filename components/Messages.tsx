@@ -1,12 +1,12 @@
 import Message from "./Message";
 
-export type Message = {
+export type MessageProps = {
   actor: "you" | "bot";
   body: JSX.Element[] | JSX.Element;
 };
 
 type MessagesProps = {
-  messages: Message[];
+  messages: MessageProps[];
 };
 
 export default function Messages({ messages }: MessagesProps) {

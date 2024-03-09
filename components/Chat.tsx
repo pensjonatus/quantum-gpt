@@ -3,10 +3,10 @@ import { generateResponse } from "@/app/actions";
 import Link from "next/link";
 import { useState } from "react";
 import Button from "./Button";
-import Messages, { Message } from "./Messages";
+import Messages, { MessageProps } from "./Messages";
 
 export default function Chat() {
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useState<MessageProps[]>([
     {
       actor: "bot",
       body: [<p key="chat=up">What would you like to chat about?</p>],
