@@ -137,7 +137,7 @@ export default function Page() {
       </div>
       {faqs.map(({ question, answer }) => (
         <section key={question} className="mb-12">
-          <h2 className="mb-2 text-xl font-semibold text-gray-400">
+          <h2 className="mb-2 text-xl font-semibold">
             {question}
           </h2>
           <div className="answer">{answer}</div>
