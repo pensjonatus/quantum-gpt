@@ -1,7 +1,7 @@
 "use client";
 import { generateResponse } from "@/app/actions";
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, SyntheticEvent, useState } from "react";
 import Button from "./Button";
 import Messages, { MessageProps } from "./Messages";
 
@@ -12,12 +12,15 @@ export default function Chat() {
       body: [<p key="chat=up">What would you like to chat about?</p>],
     },
   ]);
+  const [query, setQuery] = useState("");
 
-  const queryFieldName = "query";
+  function handleChange(event: FormEvent<HTMLInputElement>) {
+    setQuery(event.currentTarget.value);
+  }
 
-  async function submitQuery(formData: FormData) {
-    const userMessage = formData.get(queryFieldName);
-    if (!userMessage) {
+  async function submitQuery(event: SyntheticEvent) {
+    event.preventDefault();
+    if (!query) {
       return;
     }
 
@@ -27,23 +30,23 @@ export default function Chat() {
       ...currentMessages,
       {
         actor: "you",
-        body: [
-          <p key={new Date().getMilliseconds()}>{userMessage.toString()}</p>,
-        ],
+        body: [<p key={new Date().getMilliseconds()}>{query.toString()}</p>],
       },
       { actor: "bot", body: botResponse },
     ]);
+    setQuery("");
   }
 
   return (
     <div className="w-full p-5 flex flex-col gap-4 items-center md:max-w-[800px]">
       <Messages messages={messages} />
-      <form action={submitQuery} className="flex gap-2 w-full">
+      <form onSubmit={submitQuery} className="flex gap-2 w-full">
         <input
           type="text"
-          name={queryFieldName}
           autoComplete="off"
           className="block flex-1 border-0 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 rounded-lg"
+          value={query}
+          onChange={handleChange}
         />
         <Button type="submit" aria-label="Send">
           <svg
@@ -61,14 +64,16 @@ export default function Chat() {
         </Button>
       </form>
       {messages.length > 1 && (
-        <div>
-          The answer does not seem correct? Don&apos;t worry! According to the
-          many worlds interpretation, there is a universe where the bot
-          generated the correct response.{" "}
-          <Link href="/faq" className="link">
-            Learn more in our FAQ
-          </Link>
-          .
+        <div className="relative w-full">
+          <div className="absolute top-0 left-0">
+            The answer does not seem correct? Don&apos;t worry! According to the
+            many worlds interpretation, there is a universe where the bot
+            generated the correct response.{" "}
+            <Link href="/faq" className="link">
+              Learn more in our FAQ
+            </Link>
+            .
+          </div>
         </div>
       )}
     </div>
