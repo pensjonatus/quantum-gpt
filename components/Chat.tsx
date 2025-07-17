@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, SyntheticEvent, useState } from "react";
 import Button from "./Button";
 import Messages, { MessageProps } from "./Messages";
+import Logo from "./Logo";
 
 export default function Chat() {
   const [messages, setMessages] = useState<MessageProps[]>([
@@ -39,6 +40,7 @@ export default function Chat() {
 
   return (
     <div className="w-full p-5 flex flex-col gap-4 items-center md:max-w-[800px]">
+      <Logo />
       <Messages messages={messages} />
       <form onSubmit={submitQuery} className="flex gap-2 w-full">
         <input
